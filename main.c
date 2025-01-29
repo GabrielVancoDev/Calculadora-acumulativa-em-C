@@ -30,9 +30,13 @@ int main()
             break;
         case 4:
             res /= num2;
+            if(num==0){
+                printf("Erro!, divisão por 0");
+            }
             break;
         default:
             printf("Op inválido!");
+            return 0;
             break;
         }
         printf("\nResultado parcial: %.2f", res);
