@@ -2,49 +2,51 @@
 #include <stdlib.h>
 #include <locale.h>
 
-
-int main()
-{
-    setlocale(LC_ALL,"Portuguese");
-    float num=0,num2=0, res=1;
-    int op;
-    int enter = 1;
-
-    printf("\nDigite o n˙mero: ");
-    scanf(" %f", &res);
-
-    do{
-        printf("\nDigite a operaÁ„o \n 1-soma  2-SubtraÁ„o\n 4-Divis„o  3-MultiplicaÁ„o\n");
-        scanf(" %d", &op);
-        printf("\nDigite o n˙mero: ");
-        scanf(" %f", &num2);
-        switch(op) {
-        case 1:
-            res +=num2;
-            break;
-        case 2:
-            res -=num2;
-            break;
-        case 3:
-            res *=num2;
-            break;
-        case 4:
-            res /= num2;
-            if(num==0){
-                printf("Erro!, divis„o por 0");
-            }
-            break;
-        default:
-            printf("Op inv·lido!");
-            return 0;
-            break;
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+    
+    float num2 = 0, res = 1;
+    int op, continuar = 1;
+    
+    printf("\nDigite o n√∫mero inicial: ");
+    scanf("%f", &res);
+    
+    do {
+        printf("\nEscolha a opera√ß√£o:\n");
+        printf("1 - Soma\n2 - Subtra√ß√£o\n3 - Multiplica√ß√£o\n4 - Divis√£o\n");
+        printf("Op√ß√£o: ");
+        scanf("%d", &op);
+        
+        printf("\nDigite o pr√≥ximo n√∫mero: ");
+        scanf("%f", &num2);
+        
+        switch (op) {
+            case 1:
+                res += num2;
+                break;
+            case 2:
+                res -= num2;
+                break;
+            case 3:
+                res *= num2;
+                break;
+            case 4:
+                if (num2 == 0) {
+                    printf("Erro! Divis√£o por 0 n√£o permitida.\n");
+                    continue; // Volta ao in√≠cio do loop
+                }
+                res /= num2;
+                break;
+            default:
+                printf("Op√ß√£o inv√°lida!\n");
+                continue;
         }
-        printf("\nResultado parcial: %.2f", res);
-        printf("\nDigite 0 para calcular: ");
-        scanf(" %d", &enter);
-    } while(enter != 0);
-
-    printf("Resultado: %.2f", res);
-
+        
+        printf("\nResultado parcial: %.2f\n", res);
+        printf("Digite 0 para finalizar ou outro n√∫mero para continuar: ");
+        scanf("%d", &continuar);
+    } while (continuar != 0);
+    
+    printf("\nResultado final: %.2f\n", res);
     return 0;
 }
